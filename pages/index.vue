@@ -57,8 +57,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.container{
-  // position: relative;
-}
-</style>
+
