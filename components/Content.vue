@@ -78,7 +78,8 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(120px, auto);
 
-  grid-gap: 33px;
+  // grid-gap: 33px;
+  grid-gap: 29px;
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
