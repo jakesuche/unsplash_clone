@@ -20,7 +20,7 @@ export default {
   },
 
   env: {
-    accessKey:process.env.UNPLASH_ACCESS_KEY || 'http://localhost:3000'
+    accessKey:process.env.UNPLASH_ACCESS_KEY 
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
