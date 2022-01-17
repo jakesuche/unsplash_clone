@@ -1,7 +1,7 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'vue_test',
@@ -49,6 +49,9 @@ export default {
     scss: ['./assets/scss/*.scss']
   },
 
+  generate: {
+    fallback: true
+  },
   
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
