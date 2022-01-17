@@ -31,7 +31,7 @@ export default {
         this.query = event;
         this.getPhotos();
       }.bind(this)
-      //
+      ///
     );
   },
   methods: {
