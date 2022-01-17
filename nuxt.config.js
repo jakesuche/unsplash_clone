@@ -52,6 +52,9 @@ export default {
   generate: {
     fallback: true
   },
+  server:{
+    port:process.env.PORT || 3000
+  },
   
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
