@@ -38,7 +38,8 @@ export default {
     getPhotos() {
       
       this.loading = false
-      this.access_key =  process.env.UNPLASH_ACCESS_KEY
+      this.access_key = process.env.UNPLASH_ACCESS_KEY
+      console.log(process.env.UNPLASH_ACCESS_KEY)
       this.$axios
         .get(
           `${this.url}/search/photos?client_id=${this.access_key}&query=${this.query}&per_page=${this.per_page}&orientation=${this.orientation[1]}`
