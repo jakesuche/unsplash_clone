@@ -4,7 +4,6 @@ const state = {
   url: "https://api.unsplash.com",
   per_page: 7,
   orientation: ["portrait", "landscape", "squarish"],
-  query: "fun",
   loading: false,
   default:'fun'
 };
@@ -23,25 +22,43 @@ const mutations = {
 };
 // actions
 const actions = {
+
   getPhotos({ commit }, query) {
+    console.log(this.$config)
     commit("resolveState", { query: query, loading: false });
     console.log(process.env.accessKey, "KEY");
-    this.$axios
+    if(query){
+        this.$axios
       .get(
         `${state.url}/search/photos?client_id=${state.access_key}&query=${query ? query : state.default}&per_page=${state.per_page}&orientation=${state.orientation[1]}`
       )
       .then((res) => {
         const photos = res.data.results;
         console.log(res);
-        // this.loading = true;
         commit("resolveState", { query: query, loading: true });
         commit("storePhotos", photos);
       })
       .catch((err) => {
         console.log(err);
         commit("resolveState", { query: query, loading: true });
-        // this.loading = true;
       });
+    }else{
+        this.$axios
+      .get(
+        `${state.url}/photos?client_id=${state.access_key}&per_page=${state.per_page}&orientation=${state.orientation[1]}`
+      )
+      .then((res) => {
+        const photos = res.data
+        console.log(res);
+        commit("resolveState", { query: query, loading: true });
+        commit("storePhotos", photos);
+      })
+      .catch((err) => {
+        console.log(err);
+        commit("resolveState", { query: query, loading: true });
+      });
+    }
+    
   },
   
 };

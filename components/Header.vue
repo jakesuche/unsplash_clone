@@ -76,6 +76,9 @@ export default {
     font-weight: 500;
     animation: fadein 1s ease-in-out;
     cursor: pointer;
+    @media(max-width: 528px){
+      font-size:1.1rem;
+    }
     span {
       font-weight: 400;
       opacity: 0.5;
@@ -84,8 +87,7 @@ export default {
   }
 }
 
-.header_text {
-}
+
 
 @keyframes fadein {
   from {

@@ -1,7 +1,10 @@
 <template>
   <div class="container">
+    <!-- header -->
     <Header  />
+    <!-- content component -->
     <Content :query="query" v-if="loading" :photos="photos" />
+    <!-- place holder loader -->
     <Placeholder v-else />
   </div>
 </template>
@@ -13,7 +16,6 @@ export default {
   data() {
     return {
       query: "",
-      
     };
   },
 
@@ -24,16 +26,17 @@ export default {
     })
   },
   created() {
+    
     this.getPhotos();
     console.log(this)
+    // event been called from Search input component on search
     this.$EventBus.$on(
       "change",
       function (event) {
         this.query = event;
-        
         this.getPhotos();
       }.bind(this)
-      ///
+  
     );
   },
   methods: {

@@ -1,52 +1,50 @@
 <template>
-
-
-    <div class="content" v-if="photos.length > 0">
-      <div
-        @click="showModal(photo)"
-        :style="{ backgroundImage: `url(${photo.urls.small})` }"
-        class="grid-item"
-        v-for="(photo, i) in photos.slice(0, 6)"
-        :key="i"
-      >
-        <div class="background"></div>
-        <section class="text_wrapper">
-          <h3>{{ ` ${photo.user.first_name} ${photo.user.last_name}` }}</h3>
-          <h5>{{ ` ${photo.user.location}` }}</h5>
-        </section>
-      </div>
-      <Modal v-show="isModalVisible" @close="closeModal">
-        <img
-          class="modal_image"
-          :src="selected.urls ? selected.urls.full : null"
-        />
-        <div class="footer">
-          <h3 v-if="selected.user" class="footer_title">
-            {{ ` ${selected.user.first_name} ${selected.user.last_name}` }}
-          </h3>
-          <h5 v-if="selected.user" class="footer_sub_title">
-            {{ selected.user.location }}
-          </h5>
-        </div>
-      </Modal>
+  <div class="content" v-if="photos.length > 0">
+    <div
+      @click="showModal(photo)"
+      :style="{ backgroundImage: `url(${photo.urls.small})` }"
+      class="grid-item"
+      v-for="(photo, i) in photos.slice(0, 6)"
+      :key="i"
+    >
+      <div class="background"></div>
+      <section class="text_wrapper">
+        <h3>{{ ` ${photo.user.first_name} ${photo.user.last_name}` }}</h3>
+        <h5>{{ photo.user.location || 'Location not available' }}</h5>
+      </section>
     </div>
-    
- 
-  <Nodata :query="query" v-else />
 
+    <!-- modal start -->
+    <Modal v-show="isModalVisible" @close="closeModal">
+      <img
+        class="modal_image"
+        :src="selected.urls ? selected.urls.full : null"
+      />
+      <div class="footer">
+        <h3 v-if="selected.user" class="footer_title">
+          {{ ` ${selected.user.first_name} ${selected.user.last_name}` }}
+        </h3>
+        <h5 v-if="selected.user" class="footer_sub_title">
+          {{ selected.user.location || 'Location not available' }}
+        </h5>
+      </div>
+    </Modal>
+    <!-- modal end -->
+  </div>
+
+  <Nodata :query="query" v-else />
 </template>
 
 <script>
 export default {
   props: ["photos", "query"],
-  transition:{
-    name:'flip',
-    mode:'out-in',
-    appear:true,
-    beforeEnter(el){
-      console.log(el)
-    }
-
+  transition: {
+    name: "flip",
+    mode: "out-in",
+    appear: true,
+    beforeEnter(el) {
+      console.log(el);
+    },
   },
   data() {
     return {
@@ -57,7 +55,12 @@ export default {
   methods: {
     showModal(data) {
       this.selected = data;
-      this.isModalVisible = true;
+      // this.isModalVisible = true;
+      var ref = this
+      setTimeout(()=>{
+        ref.isModalVisible = true
+      },100)
+       
     },
     closeModal() {
       this.isModalVisible = false;
@@ -85,16 +88,15 @@ export default {
   margin: 0 auto;
   text-align: center;
   color: white;
-  // margin-top: 30px;
   animation: fadeIn 1s ease-in-out;
   position: relative;
   top: -53px;
-
-  //   left: 14%;
   .modal_image {
     width: 100%;
     border: none;
-
+    height:100%;
+    max-height: 500px;
+    object-fit: cover;
     border-start-end-radius: 9px;
     border-start-start-radius: 9px;
   }
@@ -110,6 +112,8 @@ export default {
     }
     .footer_sub_title {
       color: #4a6f8e;
+    font-weight: 500;
+    opacity: 0.7;
     }
   }
 
@@ -127,7 +131,7 @@ export default {
       background: rgb(2, 0, 36);
       background: linear-gradient(
         0deg,
-        rgba(2, 0, 36, 0.9514180672268907) 11%,
+        rgba(2, 0, 36, 0.707) 11%,
         rgba(142, 142, 157, 0.11668417366946782) 48%
       );
       height: 100%;
@@ -142,6 +146,10 @@ export default {
       margin-left: 20px;
       text-align: left;
       background: none;
+      h5{
+        opacity: 0.7;
+      font-weight: 500;
+      }
     }
   }
 
@@ -157,12 +165,11 @@ export default {
   //  min-height: 350px;
 
   @media (max-width: 678px) {
-    grid-column:1/3 ;
+    grid-column: 1/3;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9 ;
-    grid-row:1/3;
-
+  @media (max-width: 375px) {
+    grid-column: 1/9;
+    grid-row: 1/3;
   }
 }
 .grid-item:nth-child(2) {
@@ -172,10 +179,9 @@ export default {
     grid-column: 3/9;
     grid-row: 1/4;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9 ;
-    grid-row:3/5;
-
+  @media (max-width: 375px) {
+    grid-column: 1/9;
+    grid-row: 3/5;
   }
 }
 .grid-item:nth-child(3) {
@@ -185,10 +191,9 @@ export default {
     grid-column: 1/3;
     grid-row: 3/6;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:5/7;
-
+  @media (max-width: 375px) {
+    grid-column: 1/9;
+    grid-row: 5/7;
   }
 }
 .grid-item:nth-child(4) {
@@ -198,10 +203,9 @@ export default {
     grid-column: 3/9;
     grid-row: 4/7;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:7/9;
-
+  @media (max-width: 375px) {
+    grid-column: 1/9;
+    grid-row: 7/9;
   }
 }
 .grid-item:nth-child(5) {
@@ -211,10 +215,9 @@ export default {
     grid-column: 1/3;
     grid-row: 6/9;
   }
-   @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:9/11;
-
+  @media (max-width: 375px) {
+    grid-column: 1/9;
+    grid-row: 9/11;
   }
 }
 .grid-item:nth-child(6) {
@@ -224,16 +227,18 @@ export default {
     grid-column: 3/9;
     grid-row: 7/9;
   }
-   @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:11/13;
-
+  @media (max-width: 375px) {
+    grid-column: 1/9;
+    grid-row: 11/13;
   }
 }
 
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
 </style>

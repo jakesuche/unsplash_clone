@@ -22,6 +22,9 @@ export default {
   env: {
     accessKey:process.env.UNPLASH_ACCESS_KEY 
   },
+  publicRuntimeConfig:{
+    accessKey:process.env.UNPLASH_ACCESS_KEY 
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

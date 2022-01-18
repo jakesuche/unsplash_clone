@@ -1,6 +1,11 @@
 <template>
   <div class="content">
-    <div class="grid-item animated-background" v-for="(photo, i) in 6" :key="i"></div>
+    <div class="grid-item animated-background" v-for="(photo, i) in 6" :key="i">
+        <section class="text_wrapper">
+        <div class="animated-background"></div>
+        <div class="animated-background"></div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -53,7 +58,33 @@ export default {
     background-size: cover;
     position: relative;
     background-color: #eee;
-    // background: red;
+    .text_wrapper {
+      margin-top: 100%;
+    //    background: red;
+      bottom: 0;
+      position: absolute;
+      line-height: 0;
+      margin-left: 20px;
+      text-align: left;
+      div:nth-child(1){
+          display:flex;
+          height:20px;
+          width:150px;
+           background-color: #eee;
+           box-shadow: $box-shadow; 
+           margin-bottom: 10px;
+      }
+      div:nth-child(2){
+          display:flex;
+          height:20px;
+          width:100px;
+           background-color: #eee;
+           box-shadow: $box-shadow; 
+           margin-bottom: 15px;
+      }
+    
+    }
+    
   }
 
   @media (max-width: 678px) {
