@@ -22,7 +22,7 @@ export default {
   },
 
   env: {
-    accessKey:process.env.UNPLASH_ACCESS_KEY 
+    accessKey:process.env.UNPLASH_ACCESS_KEY || 'szFRyLI76AzCZgCf2iX83qynE1umhteCj7qhmf1pnek'
   },
   publicRuntimeConfig:{
     accessKey:process.env.UNPLASH_ACCESS_KEY 

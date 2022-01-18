@@ -24,7 +24,6 @@ const mutations = {
 const actions = {
 
   getPhotos({ commit }, query) {
-    console.log(this.$config)
     commit("resolveState", { query: query, loading: false });
     console.log(process.env.accessKey, "KEY");
     if(query){
