@@ -99,10 +99,9 @@ export default {
   @media (max-width: 678px) {
     grid-column:1/3 ;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9 ;
-    grid-row:1/3;
-
+ @media (max-width: 459px) {
+    grid-column: 1/9;
+    grid-row: 1/4;
   }
 
 
@@ -114,10 +113,9 @@ export default {
     grid-column: 3/9;
     grid-row: 1/4;
   }
-   @media(max-width: 375px) {
-    grid-column:1/9 ;
-    grid-row:3/5;
-
+   @media (max-width: 459px) {
+    grid-column: 1/9;
+    grid-row: 4/7;
   }
 
 }
@@ -128,10 +126,9 @@ export default {
     grid-column: 1/3;
     grid-row: 3/6;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:5/7;
-
+  @media (max-width: 459px) {
+    grid-column: 1/9;
+    grid-row: 7/10;
   }
   
 }
@@ -142,10 +139,9 @@ export default {
     grid-column: 3/9;
     grid-row: 4/7;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:7/9;
-
+  @media (max-width: 459px) {
+    grid-column: 1/9;
+    grid-row: 10/13;
   }
 }
 .grid-item:nth-child(5) {
@@ -155,10 +151,9 @@ export default {
     grid-column: 1/3;
     grid-row: 6/9;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:9/11;
-
+   @media (max-width: 459px) {
+    grid-column: 1/9;
+    grid-row: 13/16;
   }
 }
 .grid-item:nth-child(6) {
@@ -168,10 +163,9 @@ export default {
     grid-column: 3/9;
     grid-row: 7/9;
   }
-  @media(max-width: 375px) {
-    grid-column:1/9;
-    grid-row:11/13;
-
+  @media (max-width: 459px) {
+    grid-column: 1/9;
+    grid-row: 16/19;
   }
 }
 

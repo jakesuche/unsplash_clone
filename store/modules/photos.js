@@ -25,7 +25,7 @@ const actions = {
 
   getPhotos({ commit }, query) {
     commit("resolveState", { query: query, loading: false });
-    console.log(process.env.accessKey, "KEY");
+   
     if(query){
         this.$axios
       .get(
@@ -33,7 +33,7 @@ const actions = {
       )
       .then((res) => {
         const photos = res.data.results;
-        console.log(res);
+       
         commit("resolveState", { query: query, loading: true });
         commit("storePhotos", photos);
       })
@@ -48,7 +48,7 @@ const actions = {
       )
       .then((res) => {
         const photos = res.data
-        console.log(res);
+        
         commit("resolveState", { query: query, loading: true });
         commit("storePhotos", photos);
       })

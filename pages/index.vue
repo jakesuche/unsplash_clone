@@ -28,7 +28,7 @@ export default {
   created() {
     
     this.getPhotos();
-    console.log(this)
+
     // event been called from Search input component on search
     this.$EventBus.$on(
       "change",
